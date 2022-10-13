@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+rel="stylesheet">
+
+
+<title>Layout</title>
+</head>
+<body>
+   <div class="layout">
+    <div class="sidebar">
+        <div class="logo">
+            <img src="./images/logo-light-full.png" alt="">
+        </div>
+        <div class="list-item">
+            <ul>
+                <h3>APPS</h3>
+                <li> <span class="material-icons">analytics</span>Project</li>
+                <li><span class="material-icons">diversity_3</span>     CRM</li>
+                <li><span class="material-icons">trending_up</span>          Sales</li>
+                <li><span class="material-icons">monetization_on</span>              Crypto</li>
+                <li><span class="material-icons">menu_book</span>             Knowledge Base</li>
+                <li><span class="material-icons">account_circle</span>                    Account</li>
+            </ul>
+            <ul>
+                <h3>UI COMPONENT</h3>
+                <li> <span class="material-icons">analytics</span>Common</li>
+                <li><span class="material-icons">diversity_3</span>     Feedback</li>
+                <li><span class="material-icons">trending_up</span>          Data Display</li>
+                <li><span class="material-icons">monetization_on</span>              Forms</li>
+                <li><span class="material-icons">menu_book</span>            Navigation</li>
+                <li><span class="material-icons">account_circle</span>                    Graph</li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+       <div class="topbar">
+        <div class="lefbar">
+            <span class="material-icons">menu</span>  
+            <span class="material-icons">search</span>   
+        </div>
+        <div class="rightbar">
+            <div class="countrylogo">
+                <img src="./images/countryflag.jpg" alt="">
+                
+            </div>
+            <div class="profileicons">
+                <span class="material-icons">notifications</span> 
+                <span class="material-icons">settings</span>
+            </div>
+            <div class="countrylogo">
+                <img src="./images/profile.jpg" alt="">   
+            </div>
+            <div class="personaldata">
+                <h3>Admin</h3>
+                <h3>Carolyn Perkins</h3>
+            </div>
+        </div>
+       </div>
+       <div class="body">
+        <div class="one">
+            <div class="heading">
+                <h1>Sales Overview</h1>
+                <p>View your current sales & summary</p>
+            </div>
+            <div class="filter">
+                <div class="date">
+                    Jul 13,2022-Oct 13,2022 
+                </div>
+                <div class="date">
+                    <span class="material-icons">filter_alt</span>  Filter 
+                </div>
+            </div>
+        </div>
+        <div class="two">
+            <div class="revenue date">
+                <h3 style="color: #111827;">Revenue</h3>
+                <h1 style="color:black ;">$21,827.13</h1>
+                <p>vs.3 months prior to 13 Jul</p>
+            </div>
+            <div class="revenue date">
+                <h3 style="color: #111827;">Orders</h3>
+                <h1 style="color:black ;">1,758</h1>
+                <p>vs.3 months prior to 13 Jul</p>
+            </div>
+            <div class="revenue date">
+                <h3 style="color: #111827;">Purchases</h3>
+                <h1 style="color:black ;">$7,827.13</h1>
+                <p>vs.3 months prior to 13 Jul</p>
+            </div>
+            
+        </div>
+        <div class="three">
+         <div class="salesreport date">
+            <h1 style="margin-left: 70px; color:rgb(71, 71, 71)">Sales Report</h1>
+            <div id="curve_chart" style="width: 100% ; height: 93%;"></div>
+         </div>
+         <div class="catagories date">
+            <h1 style="margin-left: 45px; color:rgb(71, 71, 71); margin-bottom: 70px;">Catagories</h1>
+            <div id="donutchart" style="width: 800px; height: 500px;"></div>
+         </div>
+        </div>
+       </div>
+    </div>
+   </div>
+</body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Year', 'Sales', 'Expenses'],
+      ['2004',  1000,      400],
+      ['2005',  1170,      460],
+      ['2006',  660,       1120],
+      ['2007',  1030,      540]
+    ]);
+
+    var options = {
+      title: 'Company Performance',
+      chartArea: {'width': '88%', 'height': '88%'},
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+  }
+</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ]);
+
+    var options = {
+      
+      chartArea: {'width': '88%', 'height': '88%'},
+      legend: { position: 'bottom' },
+      pieHole: 0.4,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+  }
+</script>
+</html>
